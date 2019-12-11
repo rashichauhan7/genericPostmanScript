@@ -1,0 +1,2013 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Node.js Assignment",
+		"_postman_id": "304e6440-8d7b-a256-42a2-0d14b8ec3c8f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Truncate",
+			"request": {
+				"url": "http://localhost:3000/api/truncate",
+				"method": "DELETE",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify No Students",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify No Students\", function () {",
+							"    var students = pm.response.json();",
+							"    pm.expect(students.length).to.eql(0);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify No Questions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify No Students\", function () {",
+							"    var questions = pm.response.json();",
+							"    pm.expect(questions.length).to.eql(0);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Charlie 345",
+			"request": {
+				"url": "http://localhost:3000/api/student",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"description": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"_id\": 345,\n\t\"firstName\": \"Charlie\",\n\t\"lastName\": \"Brown\",\n\t\"username\": \"charlie\",\n\t\"password\": \"charlie\",\n\t\"gradYear\": 2021,\n\t\"scholarship\": 17000\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Charlie",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Charlie\", function () {",
+							"    var charlie = pm.response.json();",
+							"    pm.expect(charlie._id).to.eql(345);",
+							"    pm.expect(charlie.firstName).to.eql(\"Charlie\");",
+							"    pm.expect(charlie.lastName).to.eql(\"Brown\");",
+							"    pm.expect(charlie.username).to.eql(\"charlie\");",
+							"    pm.expect(charlie.password).to.eql(\"charlie\");",
+							"    pm.expect(charlie.gradYear).to.eql(2021);",
+							"    pm.expect(charlie.scholarship).to.eql(17000);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/345",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"description": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify 1 Student",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify 1 Student\", function () {",
+							"    var students = pm.response.json();",
+							"    pm.expect(students.length).to.eql(1);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Daniel 456",
+			"request": {
+				"url": "http://localhost:3000/api/student",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"description": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"_id\": 456,\n\t\"firstName\": \"Daniel\",\n\t\"lastName\": \"Craig\",\n\t\"username\": \"dan\",\n\t\"password\": \"dan\",\n\t\"gradYear\": 2022,\n\t\"scholarship\": 18000\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Daniel",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Daniel\", function () {",
+							"    var charlie = pm.response.json();",
+							"    pm.expect(charlie._id).to.eql(456);",
+							"    pm.expect(charlie.firstName).to.eql(\"Daniel\");",
+							"    pm.expect(charlie.lastName).to.eql(\"Craig\");",
+							"    pm.expect(charlie.username).to.eql(\"dan\");",
+							"    pm.expect(charlie.password).to.eql(\"dan\");",
+							"    pm.expect(charlie.gradYear).to.eql(2022);",
+							"    pm.expect(charlie.scholarship).to.eql(18000);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/456",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify 2 Students",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify 2 Students\", function () {",
+							"    var students = pm.response.json();",
+							"    pm.expect(students.length).to.eql(2);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Dummy Student",
+			"request": {
+				"url": "http://localhost:3000/api/student",
+				"method": "POST",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"_id\": 555,\n\t\"firstName\": \"Dummy\",\n\t\"lastName\": \"Student\",\n\t\"username\": \"dummy\",\n\t\"password\": \"dummy\",\n\t\"gradYear\": 1234,\n\t\"scholarship\": 2345\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify 3 Students",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify 3 Students\", function () {",
+							"    var students = pm.response.json();",
+							"    pm.expect(students.length).to.eql(3);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Dummy Student",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Daniel\", function () {",
+							"    var charlie = pm.response.json();",
+							"    pm.expect(charlie._id).to.eql(555);",
+							"    pm.expect(charlie.firstName).to.eql(\"Dummy\");",
+							"    pm.expect(charlie.lastName).to.eql(\"Student\");",
+							"    pm.expect(charlie.username).to.eql(\"dummy\");",
+							"    pm.expect(charlie.password).to.eql(\"dummy\");",
+							"    pm.expect(charlie.gradYear).to.eql(1234);",
+							"    pm.expect(charlie.scholarship).to.eql(2345);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/555",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Dummy Student",
+			"request": {
+				"url": "http://localhost:3000/api/student/555",
+				"method": "PUT",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"Smart\",\n\t\"lastName\": \"Student\",\n\t\"gradYear\": 4321,\n\t\"scholarship\": 5423\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Dummy Student After Update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Daniel\", function () {",
+							"    var charlie = pm.response.json();",
+							"    pm.expect(charlie._id).to.eql(555);",
+							"    pm.expect(charlie.firstName).to.eql(\"Smart\");",
+							"    pm.expect(charlie.gradYear).to.eql(4321);",
+							"    pm.expect(charlie.scholarship).to.eql(5423);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/555",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Dummy Student",
+			"request": {
+				"url": "http://localhost:3000/api/student/555",
+				"method": "DELETE",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify 2 Students",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify 2 Students\", function () {",
+							"    var students = pm.response.json();",
+							"    pm.expect(students.length).to.eql(2);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Question 111",
+			"request": {
+				"url": "http://localhost:3000/api/question",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"description": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"_id\": 111,\n\t\"question\": \"JSON stands for JavaScript Object Notation\",\n\t\"points\": 10,\n\t\"type\": \"TRUE_FALSE\",\n\t\"isTrue\": true\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify 1 Question",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify 1 Question\", function () {",
+							"    var students = pm.response.json();",
+							"    pm.expect(students.length).to.eql(1);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Question 111",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Question 111\", function () {",
+							"    var charlie = pm.response.json();",
+							"    pm.expect(charlie._id).to.eql(111);",
+							"    pm.expect(charlie.question).to.eql(\"JSON stands for JavaScript Object Notation\");",
+							"    pm.expect(charlie.points).to.eql(10);",
+							"    pm.expect(charlie.type).to.eql(\"TRUE_FALSE\");",
+							"    pm.expect(charlie.isTrue).to.eql(true);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question/111",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Question 222",
+			"request": {
+				"url": "http://localhost:3000/api/question",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"description": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"_id\": 222,\n\t\"question\": \"CSS stands for Cascading Style Sheets\",\n\t\"points\": 10,\n\t\"type\": \"TRUE_FALSE\",\n\t\"isTrue\": true\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify 2 Questions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify 2 Questions\", function () {",
+							"    var students = pm.response.json();",
+							"    pm.expect(students.length).to.eql(2);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Question 222",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Question 222\", function () {",
+							"    var charlie = pm.response.json();",
+							"    pm.expect(charlie._id).to.eql(222);",
+							"    pm.expect(charlie.question).to.eql(\"CSS stands for Cascading Style Sheets\");",
+							"    pm.expect(charlie.points).to.eql(10);",
+							"    pm.expect(charlie.type).to.eql(\"TRUE_FALSE\");",
+							"    pm.expect(charlie.isTrue).to.eql(true);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question/222",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Question 333",
+			"request": {
+				"url": "http://localhost:3000/api/question",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"description": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"_id\": 333,\n\t\"question\": \"What does JSON stand for?\",\n\t\"points\": 10,\n\t\"type\": \"MULTIPLE_CHOICE\",\n\t\"choices\": \"Java Object Notation,JavaScript Operation Notation,JavaScript Object Notation,JSON Object Notation\",\n\t\"correct\": 2\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify 3 Questions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify 3 Questions\", function () {",
+							"    var students = pm.response.json();",
+							"    pm.expect(students.length).to.eql(3);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Question 333",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Question 333\", function () {",
+							"    var charlie = pm.response.json();",
+							"    pm.expect(charlie._id).to.eql(333);",
+							"    pm.expect(charlie.question).to.eql(\"What does JSON stand for?\");",
+							"    pm.expect(charlie.points).to.eql(10);",
+							"    pm.expect(charlie.type).to.eql(\"MULTIPLE_CHOICE\");",
+							"    pm.expect(charlie.correct).to.eql(2);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question/333",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Question 444",
+			"request": {
+				"url": "http://localhost:3000/api/question",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"description": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"_id\": 444,\n\t\"question\": \"What does CSS stand for?\",\n\t\"points\": 10,\n\t\"type\": \"MULTIPLE_CHOICE\",\n\t\"choices\": \"Cascading Style Sheets,CSS Style Sheets,Cascading Style Scripts,Cascading Script Styles\",\n\t\"correct\": 0\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify 4 Questions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify 4 Questions\", function () {",
+							"    var students = pm.response.json();",
+							"    pm.expect(students.length).to.eql(4);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify 8 Answers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify 8 Answers\", function () {",
+							"    var students = pm.response.json();",
+							"    pm.expect(students.length).to.eql(8);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/answer",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify 4 Answers for 456",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify 4 Answers\", function () {",
+							"    var students = pm.response.json();",
+							"    pm.expect(students.length).to.eql(4);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/456/answer",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify 4 Answers for 345",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify 4 Answers\", function () {",
+							"    var students = pm.response.json();",
+							"    pm.expect(students.length).to.eql(4);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/345/answer",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Question 444",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Question 444\", function () {",
+							"    var charlie = pm.response.json();",
+							"    pm.expect(charlie._id).to.eql(444);",
+							"    pm.expect(charlie.question).to.eql(\"What does CSS stand for?\");",
+							"    pm.expect(charlie.points).to.eql(10);",
+							"    pm.expect(charlie.type).to.eql(\"MULTIPLE_CHOICE\");",
+							"    pm.expect(charlie.correct).to.eql(0);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question/444",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Dummy Question 555",
+			"request": {
+				"url": "http://localhost:3000/api/question",
+				"method": "POST",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"_id\": 555,\n\t\"question\": \"Is this a Dummy Question?\",\n\t\"points\": 10,\n    \"type\": \"TRUE_FALSE\",\n    \"isTrue\": true\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify 5 Questions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify 5 Questions\", function () {",
+							"    var students = pm.response.json();",
+							"    pm.expect(students.length).to.eql(5);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Dummy Question 555",
+			"request": {
+				"url": "http://localhost:3000/api/question/555",
+				"method": "PUT",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"question\": \"Is this a Smart Question?\",\n\t\"points\": 15,\n\t\"type\": \"TRUE_FALSE\",\n\t\"isTrue\": false\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Dummy Question After Update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Dummy Question After Update\", function () {",
+							"    var charlie = pm.response.json();",
+							"    pm.expect(charlie._id).to.eql(555);",
+							"    pm.expect(charlie.question).to.eql(\"Is this a Smart Question?\");",
+							"    pm.expect(charlie.points).to.eql(15);",
+							"    pm.expect(charlie.type).to.eql(\"TRUE_FALSE\");",
+							"    pm.expect(charlie.isTrue).to.eql(false);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question/555",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Dummy Question 555",
+			"request": {
+				"url": "http://localhost:3000/api/question/555",
+				"method": "DELETE",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"question\": \"Is this a Smart Question?\",\n\t\"points\": 15,\n\t\"type\": \"TRUE_FALSE\",\n\t\"isTrue\": false\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify 4 Questions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify 4 Questions\", function () {",
+							"    var students = pm.response.json();",
+							"    pm.expect(students.length).to.eql(4);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question",
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify 2  Answers for Question 111",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify 2 Answers\", function () {",
+							"    var students = pm.response.json();",
+							"    pm.expect(students.length).to.eql(2);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question/111/answer",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify 2  Answers for Question 222",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify 2 Answers\", function () {",
+							"    var students = pm.response.json();",
+							"    pm.expect(students.length).to.eql(2);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question/222/answer",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify 2  Answers for Question 333",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify 2 Answers\", function () {",
+							"    var students = pm.response.json();",
+							"    pm.expect(students.length).to.eql(2);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question/333/answer",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify 2  Answers for Question 444",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify 2 Answers\", function () {",
+							"    var students = pm.response.json();",
+							"    pm.expect(students.length).to.eql(2);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/question/444/answer",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 222",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 222\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(222);",
+							"    pm.expect(answer.question).to.eql(222);",
+							"    pm.expect(answer.student).to.eql(345);",
+							"    pm.expect(answer.trueFalseAnswer).to.eql(\"false\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/student/345/question/222/answer",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 222 copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 222\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(222);",
+							"    pm.expect(answer.question).to.eql(222);",
+							"    pm.expect(answer.student).to.eql(345);",
+							"    pm.expect(answer.trueFalseAnswer).to.eql(\"false\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/student/345/question/222/answer",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 222 by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 222\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(222);",
+							"    pm.expect(answer.question).to.eql(222);",
+							"    pm.expect(answer.student).to.eql(345);",
+							"    pm.expect(answer.trueFalseAnswer).to.eql(\"false\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/answer/222",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 444",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 444\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(444);",
+							"    pm.expect(answer.question).to.eql(444);",
+							"    pm.expect(answer.student).to.eql(345);",
+							"    pm.expect(answer.multipleChoiceAnswer).to.eql(2);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/student/345/question/444/answer",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 444 copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 444\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(444);",
+							"    pm.expect(answer.question).to.eql(444);",
+							"    pm.expect(answer.student).to.eql(345);",
+							"    pm.expect(answer.multipleChoiceAnswer).to.eql(2);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/question/444/student/345/answer",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 444 by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 444\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(444);",
+							"    pm.expect(answer.question).to.eql(444);",
+							"    pm.expect(answer.student).to.eql(345);",
+							"    pm.expect(answer.multipleChoiceAnswer).to.eql(2);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/answer/444",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 999",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 999\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(999);",
+							"    pm.expect(answer.question).to.eql(444);",
+							"    pm.expect(answer.student).to.eql(456);",
+							"    pm.expect(answer.multipleChoiceAnswer).to.eql(4);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/student/456/question/444/answer",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 999 copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 999\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(999);",
+							"    pm.expect(answer.question).to.eql(444);",
+							"    pm.expect(answer.student).to.eql(456);",
+							"    pm.expect(answer.multipleChoiceAnswer).to.eql(4);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/question/444/student/456/answer",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 999 by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 999\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(999);",
+							"    pm.expect(answer.question).to.eql(444);",
+							"    pm.expect(answer.student).to.eql(456);",
+							"    pm.expect(answer.multipleChoiceAnswer).to.eql(4);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/answer/444",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 888",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 888\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(888);",
+							"    pm.expect(answer.question).to.eql(333);",
+							"    pm.expect(answer.student).to.eql(456);",
+							"    pm.expect(answer.multipleChoiceAnswer).to.eql(3);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/student/456/question/333/answer",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 888 copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 888\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(888);",
+							"    pm.expect(answer.question).to.eql(333);",
+							"    pm.expect(answer.student).to.eql(456);",
+							"    pm.expect(answer.multipleChoiceAnswer).to.eql(3);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/question/333/student/456/answer",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 888 by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 888\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(888);",
+							"    pm.expect(answer.question).to.eql(333);",
+							"    pm.expect(answer.student).to.eql(456);",
+							"    pm.expect(answer.multipleChoiceAnswer).to.eql(3);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/answer/333",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 333",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 111\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(222);",
+							"    pm.expect(answer.question).to.eql(222);",
+							"    pm.expect(answer.student).to.eql(345);",
+							"    pm.expect(answer.trueFalseAnswer).to.eql(\"false\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/student/345/question/222/answer",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 333 copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 111\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(222);",
+							"    pm.expect(answer.question).to.eql(222);",
+							"    pm.expect(answer.student).to.eql(345);",
+							"    pm.expect(answer.trueFalseAnswer).to.eql(\"false\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/question/222/student/345/answer",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 333 by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 111\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(222);",
+							"    pm.expect(answer.question).to.eql(222);",
+							"    pm.expect(answer.student).to.eql(345);",
+							"    pm.expect(answer.trueFalseAnswer).to.eql(\"false\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/answer/222",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 111",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 111\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(111);",
+							"    pm.expect(answer.question).to.eql(111);",
+							"    pm.expect(answer.student).to.eql(345);",
+							"    pm.expect(answer.trueFalseAnswer).to.eql(\"true\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/student/345/question/111/answer",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 111 copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 111\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(111);",
+							"    pm.expect(answer.question).to.eql(111);",
+							"    pm.expect(answer.student).to.eql(345);",
+							"    pm.expect(answer.trueFalseAnswer).to.eql(\"true\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/question/111/student/345/answer",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 111 by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 111\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(111);",
+							"    pm.expect(answer.question).to.eql(111);",
+							"    pm.expect(answer.student).to.eql(345);",
+							"    pm.expect(answer.trueFalseAnswer).to.eql(\"true\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/answer/111",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 555",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 555\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(555);",
+							"    pm.expect(answer.question).to.eql(111);",
+							"    pm.expect(answer.student).to.eql(456);",
+							"    pm.expect(answer.trueFalseAnswer).to.eql(\"false\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/student/456/question/555/answer",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 555 copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 555\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(555);",
+							"    pm.expect(answer.question).to.eql(111);",
+							"    pm.expect(answer.student).to.eql(456);",
+							"    pm.expect(answer.trueFalseAnswer).to.eql(\"false\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/question/555/student/456/answer",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 555 by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 555\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(555);",
+							"    pm.expect(answer.question).to.eql(111);",
+							"    pm.expect(answer.student).to.eql(456);",
+							"    pm.expect(answer.trueFalseAnswer).to.eql(\"false\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/answer/555",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 777",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 777\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(777);",
+							"    pm.expect(answer.question).to.eql(222);",
+							"    pm.expect(answer.student).to.eql(456);",
+							"    pm.expect(answer.trueFalseAnswer).to.eql(\"true\");",
+							"}); "
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/student/456/question/222/answer",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 777 copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 777\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(777);",
+							"    pm.expect(answer.question).to.eql(222);",
+							"    pm.expect(answer.student).to.eql(456);",
+							"    pm.expect(answer.trueFalseAnswer).to.eql(\"true\");",
+							"}); "
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/question/222/student/456/answer",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Answer 777 by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Answer 777\", function () {",
+							"    var answer = pm.response.json();",
+							"    pm.expect(answer._id).to.eql(777);",
+							"    pm.expect(answer.question).to.eql(222);",
+							"    pm.expect(answer.student).to.eql(456);",
+							"    pm.expect(answer.trueFalseAnswer).to.eql(\"true\");",
+							"}); "
+						]
+					}
+				}
+			],
+			"request": {
+				"url": " http://localhost:3000/api/answer/222",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

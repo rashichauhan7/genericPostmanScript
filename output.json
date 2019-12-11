@@ -1,0 +1,1 @@
+{"relationships": {"many_classes": [], "single_classes": []}, "classes": ["s"], "data": {"s": [{"arr": ["mad", "hatter"], "id": 1, "isTrue": true, "name": "rob"}]}, "schema": {"s": [["id", "integer"], ["name", "string"], ["isTrue", "boolean"], ["arr", "string[]"]]}}

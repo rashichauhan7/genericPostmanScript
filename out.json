@@ -1,22 +1,22 @@
 {
   "relationships": {
     "many_classes": [
-      "answers"
+      "answer"
     ],
     "single_classes": [
-      "students",
-      "questions"
+      "student",
+      "question"
     ]
   },
   "classes": [
-    "students",
-    "questions",
-    "answers"
+    "student",
+    "question",
+    "answer"
   ],
   "data": {
-    "students": [
+    "student": [
       {
-        "_id": "123",
+        "_id": 123,
         "firstName": "Alice",
         "lastName": "Wonderland",
         "username": "alice",
@@ -25,7 +25,7 @@
         "scholarship": 15000
       },
       {
-        "_id": "234",
+        "_id": 234,
         "firstName": "Bob",
         "lastName": "Hope",
         "username": "bob",
@@ -34,73 +34,73 @@
         "scholarship": 12000
       }
     ],
-    "answers": [
+    "answer": [
       {
-        "_id": "123",
-        "student": "123",
-        "question": "321",
+        "_id": 123,
+        "student": 123,
+        "question": 321,
         "trueFalseAnswer": true
       },
       {
-        "_id": "234",
-        "student": "123",
-        "question": "432",
+        "_id": 234,
+        "student": 123,
+        "question": 432,
         "trueFalseAnswer": false
       },
       {
-        "_id": "345",
-        "student": "123",
-        "question": "543",
+        "_id": 345,
+        "student": 123,
+        "question": 543,
         "multipleChoiceAnswer": 1
       },
       {
-        "_id": "456",
-        "student": "123",
-        "question": "654",
+        "_id": 456,
+        "student": 123,
+        "question": 654,
         "multipleChoiceAnswer": 2
       },
       {
-        "_id": "567",
-        "student": "234",
-        "question": "321",
+        "_id": 567,
+        "student": 234,
+        "question": 321,
         "trueFalseAnswer": false
       },
       {
-        "_id": "678",
-        "student": "234",
-        "question": "432",
+        "_id": 678,
+        "student": 234,
+        "question": 432,
         "trueFalseAnswer": true
       },
       {
-        "_id": "789",
-        "student": "234",
-        "question": "543",
+        "_id": 789,
+        "student": 234,
+        "question": 543,
         "multipleChoiceAnswer": 3
       },
       {
-        "_id": "890",
-        "student": "234",
-        "question": "654",
+        "_id": 890,
+        "student": 234,
+        "question": 654,
         "multipleChoiceAnswer": 4
       }
     ],
-    "questions": [
+    "question": [
       {
-        "_id": "321",
+        "_id": 321,
         "question": "Is the following schema valid?",
         "points": 10,
         "type": "TRUE_FALSE",
         "isTrue": false
       },
       {
-        "_id": "432",
+        "_id": 432,
         "question": "DAO stands for Dynamic Access Object.",
         "points": 10,
         "type": "TRUE_FALSE",
         "isTrue": false
       },
       {
-        "_id": "543",
+        "_id": 543,
         "question": "What does JPA stand for?",
         "points": 10,
         "type": "MULTIPLE_CHOICE",
@@ -113,7 +113,7 @@
         "correct": 1
       },
       {
-        "_id": "654",
+        "_id": 654,
         "question": "What does ORM stand for?",
         "points": 10,
         "type": "MULTIPLE_CHOICE",
@@ -128,29 +128,87 @@
     ]
   },
   "schema": {
-    "students": [
-      "_id",
-      "firstName",
-      "lastName",
-      "username",
-      "password",
-      "gradYear",
-      "scholarship"
+    "student": [
+      [
+        "_id",
+        "integer"
+      ],
+      [
+        "firstName",
+        "string"
+      ],
+      [
+        "lastName",
+        "string"
+      ],
+      [
+        "username",
+        "string"
+      ],
+      [
+        "password",
+        "string"
+      ],
+      [
+        "gradYear",
+        "integer"
+      ],
+      [
+        "scholarship",
+        "integer"
+      ]
     ],
-    "answers": [
-      "_id",
-      "student",
-      "question",
-      "trueFalseAnswer",
-      "multipleChoiceAnswer"
+    "answer": [
+      [
+        "_id",
+        "integer"
+      ],
+      [
+        "student",
+        "integer"
+      ],
+      [
+        "question",
+        "integer"
+      ],
+      [
+        "trueFalseAnswer",
+        "boolean"
+      ],
+      [
+        "multipleChoiceAnswer",
+        "integer"
+      ]
     ],
-    "questions": [
-      "_id",
-      "question",
-      "points",
-      "type",
-      "choices",
-      "correct"
+    "question": [
+      [
+        "_id",
+        "integer"
+      ],
+      [
+        "question",
+        "string"
+      ],
+      [
+        "points",
+        "integer"
+      ],
+      [
+        "type",
+        "string"
+      ],
+      [
+        "choices",
+        "string[]"
+      ],
+      [
+        "correct",
+        "integer"
+      ],
+      [
+        "isTrue",
+        "boolean"
+      ]
     ]
   }
 }
