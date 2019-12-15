@@ -47,7 +47,7 @@ function addToScript(schema, call) {
     return schema;
 }
 
-function makeDummyPostDeleteCall(name, scheme, count, schema) {
+function makeDummyPostDeleteCall(name, scheme, schema) {
     var call = {};
     var id = rand(100000,999999);
     call["name"] = "Create dummy "+name;
@@ -77,11 +77,11 @@ function makeDummyPostDeleteCall(name, scheme, count, schema) {
         ],
         "body": {
             "mode": "raw",
-            "raw": data
+            "raw": JSON.stringify(data)
         },
         "description": ""
     };
-    call = addCountTestToGetCall(call, name, count + 1);
+
     schema = addToScript(schema, call);
     call = {};
     call["name"] = "Delete Dummy "+ name;
@@ -103,7 +103,6 @@ function makeDummyPostDeleteCall(name, scheme, count, schema) {
     },
         "description": ""
     };
-    call = addCountTestToGetCall(call, name, count - 1);
     schema = addToScript(schema, call);
     return schema;
 }
@@ -126,7 +125,7 @@ function makeCreatePostCall(name, data, schema) {
             ],
             "body": {
                 "mode": "raw",
-                "raw": data[entry]
+                "raw": JSON.stringify(data[entry])
             },
             "description": ""
         };
@@ -167,51 +166,8 @@ function testGetCall(name, data, schema) {
                     "exec": [
                         "pm.test(\"Verify\", function () {",
                         "    var charlie = pm.response.json();",
-                        "    pm.expect(charlie).to.eql(JSON.parse("+JSON.stringify(data[entry])+"));",
-                        "});",
-                        ""
-                    ]
-                }
-            }
-        ];
-        schema = addToScript(schema, call);
-
-    }
-    return schema;
-}
-
-function testManyClass(name, data, schema) {
-    for (var entry in data){
-        var call = {};
-        call["name"] = "Verify " + name + " " + data[entry]["_id"];
-        call["request"] = {
-            "url": "http://localhost:3000/api/"+name+ "/"+data[entry]["_id"],
-            "method": "GET",
-            "header": [
-                {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "description": "",
-                    "type": "text"
-                }
-            ],
-            "body": {
-                "mode": "raw",
-                "raw": ""
-            },
-            "description": ""
-        };
-        call["event"] = [
-            {
-                "listen": "test",
-                "script": {
-                    "type": "text/javascript",
-                    "exec": [
-                        "pm.test(\"Verify\", function () {",
-                        "    var charlie = pm.response.json();",
                         "    var obj = "+JSON.stringify(data[entry])+"",
-                        "    pm.expect(charlie[0].toString()).to.eql(obj.toString());",
+                        "    pm.expect(charlie.toString()).to.eql(obj.toString());",
                         "});",
                         ""
                     ]

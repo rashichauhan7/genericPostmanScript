@@ -9,7 +9,7 @@ generateSchema = function() {
         var call = generateCall.makeGetCall(name);
         call = generateCall.addCountTestToGetCall(call, name, userInput.data[name].length);
         schema = generateCall.addToScript(schema, call);
-        schema = generateCall.makeDummyPostDeleteCall(name, userInput.schema[name], userInput.data[name].length, schema);
+        schema = generateCall.makeDummyPostDeleteCall(name, userInput.schema[name], schema);
         schema = generateCall.makeCreatePostCall(name, userInput.data[name], schema);
         schema = generateCall.testGetCall(name, userInput.data[name], schema);
     }
